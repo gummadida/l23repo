@@ -1,0 +1,145 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "laasi123"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"AzureSqlDatabase2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase2'"
+		},
+		"LSgen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LSgen2'"
+		},
+		"SqlServer1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServer1'"
+		},
+		"azuredb123_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'azuredb123'"
+		},
+		"lsgen2src_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'lsgen2src'"
+		},
+		"LSgen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://roja123.dfs.core.windows.net/"
+		},
+		"azuredb123_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0529-124520-k4uitc57"
+		},
+		"lsgen2src_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://venu5678.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "laasi123_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"AzureSqlDatabase2_connectionString": {
+						"value": "[parameters('AzureSqlDatabase2_connectionString')]"
+					},
+					"LSgen2_accountKey": {
+						"value": "[parameters('LSgen2_accountKey')]"
+					},
+					"azuredb123_accessToken": {
+						"value": "[parameters('azuredb123_accessToken')]"
+					},
+					"lsgen2src_accountKey": {
+						"value": "[parameters('lsgen2src_accountKey')]"
+					},
+					"LSgen2_properties_typeProperties_url": {
+						"value": "[parameters('LSgen2_properties_typeProperties_url')]"
+					},
+					"azuredb123_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('azuredb123_properties_typeProperties_existingClusterId')]"
+					},
+					"lsgen2src_properties_typeProperties_url": {
+						"value": "[parameters('lsgen2src_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "laasi123_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"SqlServer1_connectionString": {
+						"value": "[parameters('SqlServer1_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'laasi123_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "laasi123_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'laasi123_ArmTemplate_1')]"
+			]
+		}
+	]
+}

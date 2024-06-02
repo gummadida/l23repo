@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "laasi123"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_connectionString": {
+			"value": ""
+		},
+		"LSgen2_accountKey": {
+			"value": ""
+		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
+		"azuredb123_accessToken": {
+			"value": ""
+		},
+		"lsgen2src_accountKey": {
+			"value": ""
+		},
+		"LSgen2_properties_typeProperties_url": {
+			"value": "https://roja123.dfs.core.windows.net/"
+		},
+		"azuredb123_properties_typeProperties_existingClusterId": {
+			"value": "0529-124520-k4uitc57"
+		},
+		"lsgen2src_properties_typeProperties_url": {
+			"value": "https://venu5678.dfs.core.windows.net/"
+		}
+	}
+}
