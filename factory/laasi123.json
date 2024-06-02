@@ -1,0 +1,9 @@
+{
+	"name": "laasi123",
+	"location": "southcentralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "067ae5f2-1a0a-4eab-8bb9-edc4cb0687dc",
+		"tenantId": "a4eab4f1-374a-4e4b-8ab0-50c6cc9584cf"
+	}
+}

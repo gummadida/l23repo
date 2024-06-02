@@ -1,0 +1,39 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSgen2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"d_scheema": {
+				"type": "string"
+			},
+			"d_file": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().d_file",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().d_scheema",
+					"type": "Expression"
+				},
+				"fileSystem": "cont-zepto"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
